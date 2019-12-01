@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#674b98</color>
+    <color name="colorPrimaryDark">#38205a</color>
+    <color name="colorAccent">#674b98</color>
+    <color name="secondColor">#32db64</color>
+    <color name="endColor">#26A84D</color>
+    <color name="book_trans">#99000000</color>
+
+    <color name="white">#fff</color>
+    <color name="black">#000</color>
+    <color name="transparent">#00000000</color>
+    <color name="delete">#e71717</color>
+    <color name="gray0">#FAFAFA</color>
+    <color name="gray1">#F5F5F5</color>
+    <color name="gray2">#EEEEEE</color>
+    <color name="gray3">#E0E0E0</color>
+    <color name="gray4">#bababa</color>
+    <color name="gray5">#424242</color>
+    <color name="gray6">#212121</color>
+    <color name="gray7">#757575</color>
+    <color name="gray8">#ebeff7</color>
+    <color name="golden">#df8d32</color>
+    <color name="end_color">#381e5d</color>
+    <color name="rating">#FBC02D</color>
+    <color name="icon">#7791a1</color>
+    <color name="textColor">#3c4a53</color>
+    <color name="primary_dark">#176BAE</color>
+    <color name="filter_color">#552b8dcd</color>
+    <color name="unsel_color">#dfe9f3</color>
+    <color name="ll_balance">#ffdfe9f3</color>
+
+</resources>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">End_Point</string>
+    <string name="user_name">Name</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="field_req">Field required</string>
+    <string name="pass_short">Password to short</string>
+    <string name="cam_pem_denied">Camera permission denied</string>
+</resources>
