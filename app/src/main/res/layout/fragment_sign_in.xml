@@ -43,6 +43,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="50dp"
                 android:src="@drawable/logo"
+
                 />
 
 
@@ -58,7 +59,9 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
-                app:layout_constraintVertical_bias=".3"
+                android:layout_marginTop="10dp"
+
+                app:layout_constraintVertical_bias=".1"
                 >
 
 
