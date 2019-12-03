@@ -2,6 +2,7 @@ package com.creativeshare.end_point.models;
 
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Patterns;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
@@ -12,32 +13,32 @@ import com.creativeshare.end_point.R;
 
 public class LoginModel extends BaseObservable {
 
-    private String user_name;
+    private String email;
     private String password;
-    public ObservableField<String> error_user_name= new ObservableField<>();
+    public ObservableField<String> error_email= new ObservableField<>();
     public ObservableField<String> error_password = new ObservableField<>();
 
 
     public LoginModel() {
-        this.user_name = "";
+        this.email = "";
         this.password="";
     }
 
-    public LoginModel(String user_name, String password) {
-        this.user_name = user_name;
-        notifyPropertyChanged(BR.user_name);
+    public LoginModel(String email, String password) {
+        this.email = email;
+        notifyPropertyChanged(BR.email);
         this.password = password;
         notifyPropertyChanged(BR.password);
 
 
     }
     @Bindable
-    public String getUser_name() {
-        return user_name;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Bindable
@@ -53,23 +54,29 @@ public class LoginModel extends BaseObservable {
 
     public boolean isDataValid(Context context)
     {
-        if (!TextUtils.isEmpty(user_name)&&
+        if (!TextUtils.isEmpty(email)&&
+                Patterns.EMAIL_ADDRESS.matcher(email).matches()&&
                 !TextUtils.isEmpty(password)&&
                 password.length()>=6
         )
         {
-            error_user_name.set(null);
+            error_email.set(null);
             error_password.set(null);
 
             return true;
         }else
             {
-                if (user_name.isEmpty())
+                if (email.isEmpty())
                 {
-                    error_user_name.set(context.getString(R.string.field_req));
-                }else
+                    error_email.set(context.getString(R.string.field_req));
+                }
+                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                {
+                    error_email.set(context.getString(R.string.inv_email));}
+
+                else
                     {
-                        error_user_name.set(null);
+                        error_email.set(null);
                     }
 
 

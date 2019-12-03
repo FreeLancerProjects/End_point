@@ -2,6 +2,9 @@ package com.creativeshare.end_point.services;
 
 
 
+import com.creativeshare.end_point.models.ScanResultModel;
+import com.creativeshare.end_point.models.UserModel;
+
 import java.util.List;
 
 import okhttp3.MultipartBody;
@@ -18,6 +21,17 @@ import retrofit2.http.Query;
 
 public interface Service {
 
-
-
+    @FormUrlEncoded
+    @POST("api/login")
+    Call<UserModel> login(
+            @Field("email") String email,
+            @Field("password") String password
+    );
+    @FormUrlEncoded
+    @POST("api/attendance")
+    Call<ScanResultModel> scan(
+            @Field("user_id") String user_id,
+            @Field("qrcode_key") String qrcode_key,
+            @Field("attendance_time") String attendance_time
+    );
 }

@@ -6,4 +6,11 @@
     <string name="field_req">Field required</string>
     <string name="pass_short">Password to short</string>
     <string name="cam_pem_denied">Camera permission denied</string>
+    <string name="email">Email</string>
+    <string name="inv_email">Invalid email</string>
+    <string name="wait">Wait...</string>
+    <string name="inv_em_ps">Invalid Email or Password</string>
+    <string name="failed">Failed</string>
+    <string name="something">Check internet connection</string>
+
 </resources>

@@ -5,7 +5,7 @@ package com.creativeshare.end_point.interfaces;
 public interface Listeners {
 
     interface LoginListener {
-        void checkDataLogin(String user_name, String password);
+        void checkDataLogin(String email, String password);
     }
 
 
