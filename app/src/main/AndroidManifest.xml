@@ -20,7 +20,7 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
         <activity
-            android:name=".activities_fragments.activity_sign_in.activities.SignInActivity"
+            android:name=".activities_fragments.activity_fragments.activity_splash.Splash_Activity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
             <intent-filter>
@@ -30,13 +30,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity_home.HomeActivity"
+            android:name=".activities_fragments.activity_fragments.activity_home.HomeActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
 
         </activity>
         <activity
-            android:name=".activities_fragments.activity_sign_in.activity_Qr.ScanActivity"
+            android:name=".activities_fragments.activity_fragments.activity_Qr.ScanActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
+
+        </activity>
+        <activity
+            android:name=".activities_fragments.activity_fragments.activities_fragments_signin.fragments.activities.SignInActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize">
 

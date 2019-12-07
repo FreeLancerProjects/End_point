@@ -1,7 +1,7 @@
 package com.creativeshare.end_point.tags;
 
 public class Tags {
-    public static String base_url = "http://localhost/mateta5r4/public/";
+    public static String base_url = "http://endpoint.semicolonsoft.com/";
     public static final String IMAGE_URL = base_url+"src/sliders/";
     public static final String IMAGE_Ads_URL= base_url+"src/images/";
     public static final String IMAGE_user_URL= base_url+"src/avatars/";

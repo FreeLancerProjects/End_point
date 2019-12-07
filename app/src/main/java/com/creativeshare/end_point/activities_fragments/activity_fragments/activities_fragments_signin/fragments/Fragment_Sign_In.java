@@ -1,9 +1,7 @@
-package com.creativeshare.end_point.activities_fragments.activity_sign_in.fragments;
+package com.creativeshare.end_point.activities_fragments.activity_fragments.activities_fragments_signin.fragments;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,8 +16,8 @@ import android.app.ProgressDialog;
 
 
 import com.creativeshare.end_point.R;
-import com.creativeshare.end_point.activities_fragments.activity_sign_in.activities.SignInActivity;
-import com.creativeshare.end_point.activity_home.HomeActivity;
+import com.creativeshare.end_point.activities_fragments.activity_fragments.activities_fragments_signin.fragments.activities.SignInActivity;
+import com.creativeshare.end_point.activities_fragments.activity_fragments.activity_home.HomeActivity;
 import com.creativeshare.end_point.databinding.FragmentSignInBinding;
 import com.creativeshare.end_point.interfaces.Listeners;
 import com.creativeshare.end_point.models.LoginModel;

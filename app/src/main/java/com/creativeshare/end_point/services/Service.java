@@ -29,9 +29,16 @@ public interface Service {
     );
     @FormUrlEncoded
     @POST("api/attendance")
-    Call<ScanResultModel> scan(
+    Call<ScanResultModel> scanopen(
             @Field("user_id") String user_id,
             @Field("qrcode_key") String qrcode_key,
             @Field("attendance_time") String attendance_time
+    );
+    @FormUrlEncoded
+    @POST("api/departure")
+    Call<ScanResultModel> scanend(
+            @Field("user_id") String user_id,
+            @Field("qrcode_key") String qrcode_key,
+            @Field("departure_time") String departure_time
     );
 }

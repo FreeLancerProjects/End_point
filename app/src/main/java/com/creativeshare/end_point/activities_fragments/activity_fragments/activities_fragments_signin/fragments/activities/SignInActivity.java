@@ -1,4 +1,4 @@
-package com.creativeshare.end_point.activities_fragments.activity_sign_in.activities;
+package com.creativeshare.end_point.activities_fragments.activity_fragments.activities_fragments_signin.fragments.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,8 @@ import androidx.fragment.app.FragmentManager;
 
 
 import com.creativeshare.end_point.R;
-import com.creativeshare.end_point.activities_fragments.activity_sign_in.fragments.Fragment_Sign_In;
-import com.creativeshare.end_point.activity_home.HomeActivity;
+import com.creativeshare.end_point.activities_fragments.activity_fragments.activities_fragments_signin.fragments.Fragment_Sign_In;
+import com.creativeshare.end_point.activities_fragments.activity_fragments.activity_home.HomeActivity;
 import com.creativeshare.end_point.language.Language;
 import com.creativeshare.end_point.preferences.Preferences;
 
