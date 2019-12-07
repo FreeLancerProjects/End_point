@@ -32,6 +32,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import io.paperdb.Paper;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -85,17 +86,15 @@ userModel=preferences.getUserData(this);
     @Override
     public void handleResult(Result result) {
 
-Toast.makeText(this,result.toString(),Toast.LENGTH_LONG).show();
-        Toast.makeText(this,result.getBarcodeFormat().toString(),Toast.LENGTH_LONG).show();
-        Toast.makeText(this,result.getText(),Toast.LENGTH_LONG).show();
+
         Calendar cal = Calendar.getInstance();
         Calendar cal2 = Calendar.getInstance();
         Calendar cal3 = Calendar.getInstance();
 
         Date currentLocalTime = cal.getTime();
-        DateFormat date = new SimpleDateFormat("HH:mm");
-        String str_date="٠٨:١٠";
-        String end_date="١٦:٣٠";
+        DateFormat date = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
+        String str_date="08:10";
+        String end_date="19:25";
         Date start = null,end = null,cureenttime = null;
 
         String localTime = date.format(currentLocalTime);
@@ -109,7 +108,6 @@ Log.e("err",e.getMessage()+localTime);        }
 cal.setTime(cureenttime);
         cal2.setTime(start);
         cal3.setTime(end);
-
         int startSHhour = cal2.get(Calendar.HOUR_OF_DAY);
         int startSHmin = cal2.get(Calendar.MINUTE);
         int timeStart = startSHhour*60 + startSHmin;
@@ -120,7 +118,7 @@ cal.setTime(cureenttime);
         int stopSHmin = cal3.get(Calendar.MINUTE);
         int timeStop = stopSHhour*60 + stopSHmin;
 // you can get seconds by adding  "...:ss" to itظ*
-Log.e("time",timeStart+" "+timeStop+" "+timeNow+" "+result.getText());
+Log.e("time",timeStart+" "+timeStop+" "+timeNow+" "+result.getText()+" "+localTime);
 if(timeStop>timeNow&&timeStart<=timeNow){
     scanopen(result.getText(),localTime);
 }
@@ -296,4 +294,5 @@ else if(timeStop<=timeNow) {
 
         }
     }
+
 }

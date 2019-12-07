@@ -10,10 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.creativeshare.end_point.R;
+import com.creativeshare.end_point.activities_fragments.activity_fragments.activities_fragments_signin.fragments.activities.SignInActivity;
 import com.creativeshare.end_point.activities_fragments.activity_fragments.activity_Qr.ScanActivity;
 import com.creativeshare.end_point.databinding.ActivityHomeBinding;
 import com.creativeshare.end_point.language.Language;
+import com.creativeshare.end_point.models.UserModel;
 import com.creativeshare.end_point.preferences.Preferences;
+import com.creativeshare.end_point.tags.Tags;
 
 import java.util.Locale;
 
@@ -23,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private Preferences preferences;
 private String current_language;
-
+private UserModel userModel;
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -48,6 +51,16 @@ private String current_language;
         Paper.init(this);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(current_language);
+        userModel=preferences.getUserData(this);
+        if(userModel!=null){
+            binding.tvName.setText(userModel.getName());
+        }
+        binding.imagelogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logout();
+            }
+        });
 binding.btnscan.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
@@ -55,6 +68,14 @@ binding.btnscan.setOnClickListener(new View.OnClickListener() {
         startActivity(intent);
     }
 });
+    }
+
+    private void Logout() {
+        preferences.create_update_userdata(this,null);
+        preferences.create_update_session(this, Tags.session_logout);
+        Intent intent = new Intent(HomeActivity.this, SignInActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 
