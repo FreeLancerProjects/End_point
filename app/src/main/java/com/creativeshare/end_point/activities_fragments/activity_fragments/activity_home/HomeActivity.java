@@ -110,9 +110,11 @@ startCounter(timeStop-timeNow);
                 binding.tvTime.setVisibility(View.VISIBLE);
                 binding.btnscan.setVisibility(View.GONE);
                 int AllSeconds = (int) (millisUntilFinished / 1000);
-                int minute=AllSeconds/60;
+                int allminute=AllSeconds/60;
+                int hour=allminute/60;
+                int minute=allminute%60;
                 int seconds= AllSeconds%60;
-                binding.tvTime.setText(minute+":"+seconds);
+                binding.tvTime.setText(hour+":"+minute+":"+seconds);
             }
 
             @Override
@@ -160,7 +162,7 @@ binding.btnscan.setOnClickListener(new View.OnClickListener() {
         startActivityForResult(intent,3);
     }
 });
-binding.imagetimes.setOnClickListener(new View.OnClickListener() {
+binding.llTimes.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(HomeActivity.this, MyTimesActivity.class);
