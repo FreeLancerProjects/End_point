@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-                    android:text='@{timesModel.status.equals("0")?"+"+ timesModel.time_plus:timesModel.status.equals("1")?"-"+ timesModel.time_plus:timesModel.time_plus}'
+                    android:text='@{timesModel.status.equals("0")?"+"+" "+ timesModel.time_plus:timesModel.status.equals("1")?"-"+" "+ timesModel.time_plus:timesModel.time_plus}'
                     android:textColor="@color/gray6"
                     android:textSize="14sp" />
             </LinearLayout>

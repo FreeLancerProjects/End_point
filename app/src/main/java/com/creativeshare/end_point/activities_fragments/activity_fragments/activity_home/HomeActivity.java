@@ -5,7 +5,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +29,11 @@ import com.creativeshare.end_point.models.UserModel;
 import com.creativeshare.end_point.preferences.Preferences;
 import com.creativeshare.end_point.tags.Tags;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import io.paperdb.Paper;
@@ -36,7 +43,7 @@ public class HomeActivity extends AppCompatActivity {
     private Preferences preferences;
 private String current_language;
 private UserModel userModel;
-    private String [] language_array;
+    private CountDownTimer countDownTimer;
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -50,19 +57,93 @@ private UserModel userModel;
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         initView();
-
+gettime();
 
 
     }
 
+    private void gettime() {
+        Calendar cal = Calendar.getInstance();
+        Calendar cal2 = Calendar.getInstance();
+        String end_date="12:00";
+
+        Date currentLocalTime = cal.getTime();
+        DateFormat date = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
+        Date end = null,cureenttime = null;
+        String localTime = date.format(currentLocalTime);
+        try {
+            end=date.parse(end_date);
+            cureenttime=date.parse(localTime);
+        } catch (ParseException e) {
+            Log.e("err",e.getMessage()+localTime);        }
+        cal.setTime(cureenttime);
+        cal2.setTime(end);
+
+        int nowHour = cal.get(Calendar.HOUR_OF_DAY);
+        int nowMin = cal.get(Calendar.MINUTE);
+        int timeNow = nowHour*60 + nowMin;
+        int stopSHhour = cal2.get(Calendar.HOUR_OF_DAY);
+        int stopSHmin = cal2.get(Calendar.MINUTE);
+        int timeStop = stopSHhour*60 + stopSHmin;
+        Log.e("time",(timeStop+" "+timeNow)+""+preferences.getTime(this));
+        if(timeStop>timeNow){
+            Log.e("time",(timeStop-timeNow)+""+preferences.getTime(this));
+
+            if(preferences.getTime(this).equals("1")){
+
+startCounter(timeStop-timeNow);
+            }
+        }
+        else {
+            preferences.create_update_time(this,"0");
+        }
+    }
+    private void startCounter(long time)
+    {
+
+        time=(time*60)*1000;
+        Log.e("times",time+"");
+        countDownTimer = new CountDownTimer(time, 1000) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                binding.tvTime.setVisibility(View.VISIBLE);
+                binding.btnscan.setVisibility(View.GONE);
+                int AllSeconds = (int) (millisUntilFinished / 1000);
+                int minute=AllSeconds/60;
+                int seconds= AllSeconds%60;
+                binding.tvTime.setText(minute+":"+seconds);
+            }
+
+            @Override
+            public void onFinish() {
+
+                binding.btnscan.setVisibility(View.VISIBLE);
+                binding.tvTime.setVisibility(View.GONE);
+                preferences.create_update_time(HomeActivity.this,"0");
+
+            }
+        }.start();
+    }
     @SuppressLint("RestrictedApi")
     private void initView() {
        preferences = Preferences.getInstance();
+        String visitTime = preferences.getLastVisit(this);
+        Calendar calendar = Calendar.getInstance();
+        long timeNow = calendar.getTimeInMillis();
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+        String date = dateFormat.format(new Date(timeNow));
+
+        if (!date.equals(visitTime)) {
+            addVisit(date);
+        }
         Paper.init(this);
         current_language = Paper.book().read("lang", Locale.getDefault().getLanguage());
         binding.setLang(current_language);
         userModel=preferences.getUserData(this);
-        language_array = new String[]{"English","العربية"};
+        binding.tvTime.setVisibility(View.GONE);
+        binding.btnscan.setVisibility(View.VISIBLE);
         if(userModel!=null){
             binding.tvName.setText(userModel.getName());
         }
@@ -76,7 +157,7 @@ binding.btnscan.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(HomeActivity.this, ScanActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,3);
     }
 });
 binding.imagetimes.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +179,11 @@ binding.imagemenue.setOnClickListener(new View.OnClickListener() {
        binding.drawerLayout.openDrawer(GravityCompat.START);
     }
 });
+    }
+
+    private void addVisit(String date) {
+        preferences.create_update_time(this,"0");
+        preferences.setLastVisit(this,date);
     }
 
     private void Logout() {
@@ -132,6 +218,7 @@ binding.imagemenue.setOnClickListener(new View.OnClickListener() {
 
             }
         }
+        gettime();
     }
 
     private void CreateLanguageDialog()

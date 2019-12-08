@@ -11,6 +11,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -231,8 +232,10 @@ else if(timeStop<=timeNow) {
     }
 
     private void NavigatetToTimesActivity() {
+        preferences.create_update_time(ScanActivity.this,"1");
+
         Intent intent = new Intent(ScanActivity.this, MyTimesActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,3);
         finish();
     }
 
@@ -304,5 +307,6 @@ else if(timeStop<=timeNow) {
 
         }
     }
+
 
 }

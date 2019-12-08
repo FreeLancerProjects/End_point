@@ -23,5 +23,6 @@
     <string name="logout">تسجيل الخروج</string>
     <string name="language_settings">اعدادات اللغه</string>
     <string name="cancel">إلغاء</string>
+    <string name="open_scan_code">افتح ماسح الكود</string>
 
 </resources>

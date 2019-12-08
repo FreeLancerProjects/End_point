@@ -105,6 +105,19 @@ public class Preferences {
         edit.apply();
         create_update_session(context, Tags.session_logout);
     }
+    public void create_update_time(Context context, String time) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("time", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("times", time);
+        editor.apply();
 
+
+    }
+
+    public String getTime(Context context) {
+        SharedPreferences preferences = context.getSharedPreferences("time", Context.MODE_PRIVATE);
+        return preferences.getString("times", "0");
+
+    }
 
 }
