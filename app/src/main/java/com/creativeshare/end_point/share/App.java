@@ -15,18 +15,6 @@ public class App extends MultiDexApplication {
         super.attachBaseContext(Language.updateResources(newBase, Preferences.getInstance().getLanguage(newBase)));
 
     }
-    @Override
-    public void onCreate() {
-        super.onCreate();
 
-        TypefaceUtil.setDefaultFont(this, "DEFAULT", "fonts/ar_font.ttf");
-        TypefaceUtil.setDefaultFont(this, "MONOSPACE", "fonts/ar_font.ttf");
-        TypefaceUtil.setDefaultFont(this, "SERIF", "fonts/ar_font.ttf");
-        TypefaceUtil.setDefaultFont(this, "SANS_SERIF", "fonts/ar_font.ttf");
-
-
-
-
-    }
 }
 

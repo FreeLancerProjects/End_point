@@ -12,5 +12,16 @@
     <string name="inv_em_ps">Invalid Email or Password</string>
     <string name="failed">Failed</string>
     <string name="something">Check internet connection</string>
+    <string name="my_times">MY Times</string>
+    <string name="no_times_to_display">No Times To Display</string>
+    <string name="date">Date : </string>
+    <string name="attendance_time">Attendance Time : </string>
+    <string name="departure_time">Departure Time : </string>
+    <string name="time_plus">Time Plus : </string>
+    <string name="late_status">Late Status : </string>
+    <string name="number_of_mins">Work Hour : </string>
+    <string name="logout">Logout</string>
+    <string name="language_settings">Language Settings</string>
+    <string name="cancel">Cancel</string>
 
 </resources>

@@ -3,6 +3,7 @@ package com.creativeshare.end_point.services;
 
 
 import com.creativeshare.end_point.models.ScanResultModel;
+import com.creativeshare.end_point.models.Times_Model;
 import com.creativeshare.end_point.models.UserModel;
 
 import java.util.List;
@@ -40,5 +41,11 @@ public interface Service {
             @Field("user_id") String user_id,
             @Field("qrcode_key") String qrcode_key,
             @Field("departure_time") String departure_time
+    );
+    @FormUrlEncoded
+    @POST("api/user/attends")
+    Call<Times_Model> getTimes(
+            @Field("page") int page,
+            @Field("user_id") String user_id
     );
 }

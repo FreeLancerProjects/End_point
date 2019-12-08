@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">ايند بوينت</string>
+    <string name="user_name">الاسم</string>
+    <string name="password">كلمة المرور</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="field_req">الحقل مطلوب</string>
+    <string name="pass_short">كلمة المرور قصيرة</string>
+    <string name="cam_pem_denied">الوصول للكاميرا غير مسموح</string>
+    <string name="email">البريد الالكترونى</string>
+    <string name="inv_email">بريد الكتورنى خاط~</string>
+    <string name="wait">انتظر ...</string>
+    <string name="inv_em_ps">البريد الالكترونى او كلمة المرور غير صحيحه</string>
+    <string name="failed">فشل</string>
+    <string name="something">تحقق من اتصال الانترنت</string>
+    <string name="my_times">اوقاتى</string>
+    <string name="no_times_to_display">لا يوجد اوقات العرضها</string>
+    <string name="date"> التاريخ : </string>
+    <string name="attendance_time"> وقت الحضور : </string>
+    <string name="departure_time"> وقت الانصراف : </string>
+    <string name="time_plus"> فرق الوقت : </string>
+    <string name="late_status"> اخر حاله : </string>
+    <string name="number_of_mins">ساعات العمل : </string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="language_settings">اعدادات اللغه</string>
+    <string name="cancel">إلغاء</string>
+
+</resources>

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,6 +17,8 @@ import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 
 import com.creativeshare.end_point.R;
+import com.creativeshare.end_point.activities_fragments.activity_fragments.activity_home.HomeActivity;
+import com.creativeshare.end_point.activities_fragments.activity_fragments.activity_my_times.MyTimesActivity;
 import com.creativeshare.end_point.databinding.ActivityScanBinding;
 import com.creativeshare.end_point.language.Language;
 import com.creativeshare.end_point.models.ScanResultModel;
@@ -49,8 +52,7 @@ private UserModel userModel;
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
-        super.attachBaseContext(Language.updateResources(newBase, Paper.book().read("lang", "ar")));
-
+        super.attachBaseContext(Language.updateResources(newBase, Paper.book().read("lang", Locale.getDefault().getLanguage())));
     }
 
 
@@ -93,8 +95,8 @@ userModel=preferences.getUserData(this);
 
         Date currentLocalTime = cal.getTime();
         DateFormat date = new SimpleDateFormat("HH:mm", Locale.ENGLISH);
-        String str_date="08:10";
-        String end_date="19:25";
+        String str_date="08:00";
+        String end_date="12:00";
         Date start = null,end = null,cureenttime = null;
 
         String localTime = date.format(currentLocalTime);
@@ -176,7 +178,7 @@ else if(timeStop<=timeNow) {
                             if (response.isSuccessful()&&response.body()!=null)
                             {
                                 Toast.makeText(ScanActivity.this,"start"+response.body().getAttendance_time(),Toast.LENGTH_LONG).show();
-                             finish();
+                           NavigatetToTimesActivity();
 
                             }else
                             {
@@ -227,6 +229,13 @@ else if(timeStop<=timeNow) {
 
         }
     }
+
+    private void NavigatetToTimesActivity() {
+        Intent intent = new Intent(ScanActivity.this, MyTimesActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void scanend(String code, String localTime)
     {
         final ProgressDialog dialog = Common.createProgressDialog(this,getString(R.string.wait));
@@ -247,8 +256,9 @@ else if(timeStop<=timeNow) {
                             dialog.dismiss();
                             if (response.isSuccessful()&&response.body()!=null)
                             {
-                                Toast.makeText(ScanActivity.this,"end"+response.body().getDeparture_time(),Toast.LENGTH_LONG).show();
-                                finish();
+                                Toast.makeText(ScanActivity.this,"End"+response.body().getDeparture_time(),Toast.LENGTH_LONG).show();
+
+                                NavigatetToTimesActivity();
 
                             }else
                             {

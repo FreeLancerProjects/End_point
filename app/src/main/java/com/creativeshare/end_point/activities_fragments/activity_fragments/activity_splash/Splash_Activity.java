@@ -18,6 +18,8 @@ import com.creativeshare.end_point.language.Language;
 import com.creativeshare.end_point.preferences.Preferences;
 import com.creativeshare.end_point.tags.Tags;
 
+import java.util.Locale;
+
 import io.paperdb.Paper;
 
 public class Splash_Activity extends AppCompatActivity {
@@ -29,7 +31,7 @@ public class Splash_Activity extends AppCompatActivity {
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
-        super.attachBaseContext(Language.updateResources(newBase, Paper.book().read("lang", "ar")));
+        super.attachBaseContext(Language.updateResources(newBase, Paper.book().read("lang", Locale.getDefault().getLanguage())));
 
     }
 
