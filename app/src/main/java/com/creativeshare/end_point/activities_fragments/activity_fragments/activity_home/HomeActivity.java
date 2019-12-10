@@ -235,11 +235,11 @@ binding.imagemenue.setOnClickListener(new View.OnClickListener() {
 
         if (current_language.equals("ar"))
         {
-            binding.rbAr.setSelected(true);
+            binding.rbAr.setChecked(true);
 
         }else if (current_language.equals("en"))
         {
-            binding.rbEn.setSelected(true);
+            binding.rbEn.setChecked(true);
 
         }
         binding.rbAr.setOnClickListener(new View.OnClickListener() {
