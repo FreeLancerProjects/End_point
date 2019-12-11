@@ -63,7 +63,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_scan);
         initView();
-        checkCameraPermission();
+
+       checkCameraPermission();
 
     }
 
@@ -72,7 +73,13 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
             ActivityCompat.requestPermissions(this, new String[]{camera_perm}, CAMERA_REQ);
 
         } else {
-            binding.scannerView.startCamera();
+try {
+    binding.scannerView.startCamera();
+
+}
+    catch (Exception e){
+    }
+
 
 
         }
@@ -82,7 +89,8 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
     private void initView() {
         binding.scannerView.setFormats(ZXingScannerView.ALL_FORMATS);
         binding.scannerView.setResultHandler(this);
-        binding.scannerView.setAutoFocus(false);
+
+        binding.scannerView.setAutoFocus(true);
         preferences = Preferences.getInstance();
         userModel = preferences.getUserData(this);
     }
@@ -139,8 +147,12 @@ public class ScanActivity extends AppCompatActivity implements ZXingScannerView.
         if (requestCode == CAMERA_REQ) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 if (binding.scannerView != null) {
-                    binding.scannerView.startCamera();
-                }
+                    try {
+                        binding.scannerView.startCamera();
+
+                    }
+                    catch (Exception e){
+                    }                }
             } else {
                 Toast.makeText(this, R.string.cam_pem_denied, Toast.LENGTH_SHORT).show();
             }
