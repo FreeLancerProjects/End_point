@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.NumberPicker;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
@@ -41,9 +42,11 @@ import io.paperdb.Paper;
 public class HomeActivity extends AppCompatActivity {
     private ActivityHomeBinding binding;
     private Preferences preferences;
-private String current_language;
-private UserModel userModel;
+    private String current_language;
+    private UserModel userModel;
     private CountDownTimer countDownTimer;
+    private ActionBarDrawerToggle toggle;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         Paper.init(newBase);
@@ -57,7 +60,7 @@ private UserModel userModel;
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         initView();
-gettime();
+        gettime();
 
 
     }
@@ -91,7 +94,7 @@ gettime();
 
             if(preferences.getTime(this).equals("1")){
 
-startCounter(timeStop-timeNow);
+                startCounter(timeStop-timeNow);
             }
         }
         else {
@@ -129,7 +132,9 @@ startCounter(timeStop-timeNow);
     }
     @SuppressLint("RestrictedApi")
     private void initView() {
-       preferences = Preferences.getInstance();
+        toggle = new ActionBarDrawerToggle(this,binding.drawerLayout,binding.toolbar,R.string.open,R.string.close);
+        toggle.syncState();
+        preferences = Preferences.getInstance();
         String visitTime = preferences.getLastVisit(this);
         Calendar calendar = Calendar.getInstance();
         long timeNow = calendar.getTimeInMillis();
@@ -155,32 +160,27 @@ startCounter(timeStop-timeNow);
                 Logout();
             }
         });
-binding.btnscan.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(HomeActivity.this, ScanActivity.class);
-        startActivityForResult(intent,3);
-    }
-});
-binding.llTimes.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Intent intent = new Intent(HomeActivity.this, MyTimesActivity.class);
-        startActivity(intent);
-    }
-});
-binding.llLang.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-CreateLanguageDialog();
-    }
-});
-binding.imagemenue.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-       binding.drawerLayout.openDrawer(GravityCompat.START);
-    }
-});
+        binding.btnscan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, ScanActivity.class);
+                startActivityForResult(intent,3);
+            }
+        });
+        binding.llTimes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, MyTimesActivity.class);
+                startActivity(intent);
+            }
+        });
+        binding.llLang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CreateLanguageDialog();
+            }
+        });
+
     }
 
     private void addVisit(String date) {
@@ -214,7 +214,7 @@ binding.imagemenue.setOnClickListener(new View.OnClickListener() {
                         .postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                            refreshActivity(lang);
+                                refreshActivity(lang);
                             }
                         },1000);
 
@@ -246,7 +246,7 @@ binding.imagemenue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-               refreshActivity("ar");
+                refreshActivity("ar");
 
 
             }

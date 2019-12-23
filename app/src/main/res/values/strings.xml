@@ -24,5 +24,6 @@
     <string name="language_settings">Language Settings</string>
     <string name="cancel">Cancel</string>
     <string name="open_scan_code">Open Scan Code</string>
-
+    <string name="open">open</string>
+    <string name="close">close</string>
 </resources>

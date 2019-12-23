@@ -24,5 +24,7 @@
     <string name="language_settings">اعدادات اللغه</string>
     <string name="cancel">إلغاء</string>
     <string name="open_scan_code">افتح ماسح الكود</string>
+    <string name="open">فتح</string>
+    <string name="close">غلق</string>
 
 </resources>
