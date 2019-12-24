@@ -159,18 +159,38 @@ try {
         }
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        checkCameraPermission();
-    }
+
 
     @Override
     protected void onStop() {
         super.onStop();
         if (binding.scannerView != null) {
+            binding.scannerView.stopCameraPreview(); //stopPreview
+
             binding.scannerView.stopCamera();
+            finish();
+
         }
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (binding.scannerView != null) {
+            binding.scannerView.stopCameraPreview(); //stopPreview
+            binding.scannerView.stopCamera();
+            finish();
+
+        }
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (binding.scannerView != null) {
+
+            binding.scannerView.stopCameraPreview(); //stopPreview
+        binding.scannerView.stopCamera();
+        finish();
+        }          // Stop camera on pause
     }
 
     private void scanopen(String code, String localTime) {
