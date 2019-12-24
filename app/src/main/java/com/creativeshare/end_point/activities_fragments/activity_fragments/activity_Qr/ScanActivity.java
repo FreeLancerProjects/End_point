@@ -111,7 +111,6 @@ try {
         Date start = null, end = null, cureenttime = null;
 
         String localTime = date.format(currentLocalTime);
-
         try {
             start = date.parse(str_date);
             end = date.parse(end_date);
