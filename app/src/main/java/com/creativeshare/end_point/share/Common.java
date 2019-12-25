@@ -1,7 +1,6 @@
 package com.creativeshare.end_point.share;
 
 import android.annotation.TargetApi;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.ContentUris;
 import android.content.Context;
@@ -18,8 +17,11 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
@@ -48,6 +50,29 @@ public class Common {
         }
 
 
+    }
+    public static void CreateSignAlertDialog(Context context, String msg)
+    {
+        final androidx.appcompat.app.AlertDialog dialog = new AlertDialog.Builder(context)
+                .setCancelable(true)
+                .create();
+
+        View view = LayoutInflater.from(context).inflate(R.layout.dialog_sign,null);
+        Button doneBtn = view.findViewById(R.id.doneBtn);
+        TextView tv_msg = view.findViewById(R.id.tv_msg);
+        tv_msg.setText(msg);
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+
+      //  dialog.getWindow().getAttributes().windowAnimations=R.style.dialog_congratulation_animation;
+        dialog.setCanceledOnTouchOutside(false);
+        //dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_window_bg);
+        dialog.setView(view);
+        dialog.show();
     }
     public static ProgressDialog createProgressDialog(Context context, String msg) {
         ProgressDialog dialog = new ProgressDialog(context);

@@ -55,7 +55,7 @@ public class LoginModel extends BaseObservable {
     public boolean isDataValid(Context context)
     {
         if (!TextUtils.isEmpty(email)&&
-                Patterns.EMAIL_ADDRESS.matcher(email).matches()&&
+                Patterns.EMAIL_ADDRESS.matcher(email+"@gmail.com").matches()&&
                 !TextUtils.isEmpty(password)&&
                 password.length()>=6
         )
@@ -70,7 +70,7 @@ public class LoginModel extends BaseObservable {
                 {
                     error_email.set(context.getString(R.string.field_req));
                 }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+                else if (!Patterns.EMAIL_ADDRESS.matcher(email+"@gmail.com").matches())
                 {
                     error_email.set(context.getString(R.string.inv_email));}
 

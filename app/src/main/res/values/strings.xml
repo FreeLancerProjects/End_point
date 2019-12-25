@@ -26,4 +26,6 @@
     <string name="open_scan_code">Open Scan Code</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="notifications">notifications</string>
+    <string name="ok">Ok</string>
 </resources>

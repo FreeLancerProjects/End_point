@@ -93,7 +93,7 @@ login(loginModel);          // Toast.makeText(activity,user_name,Toast.LENGTH_LO
         try {
 
             Api.getService(Tags.base_url)
-                    .login(loginModel.getEmail(),loginModel.getPassword())
+                    .login(loginModel.getEmail()+"@gmail.com",loginModel.getPassword())
                     .enqueue(new Callback<UserModel>() {
                         @Override
                         public void onResponse(Call<UserModel> call, Response<UserModel> response) {

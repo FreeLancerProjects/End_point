@@ -26,5 +26,6 @@
     <string name="open_scan_code">افتح ماسح الكود</string>
     <string name="open">فتح</string>
     <string name="close">غلق</string>
-
+    <string name="notifications">الاشعارات</string>
+    <string name="ok">اقبل</string>
 </resources>

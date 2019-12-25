@@ -30,6 +30,9 @@ import com.creativeshare.end_point.share.Common;
 import com.creativeshare.end_point.tags.Tags;
 import com.google.zxing.Result;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -211,6 +214,35 @@ try {
                                 NavigatetToTimesActivity();
 
                             } else {
+                                try {
+                                    try {
+
+                                        JSONObject obj = null;
+
+                                        try {
+                                            String re=response.errorBody().string();
+                                            Log.e("data",re);
+                                            obj = new JSONObject(re);
+                                            // Log.e("data",obj.stri);
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                            Log.e("data",e.getMessage());
+                                        }
+                                        Common.CreateSignAlertDialog(ScanActivity.this,"start"+response.code() + "_" + response.errorBody().string()+response.message().toString()+obj.get("message").toString());
+
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        //    Log.e("data",e.getMessage());
+                                    }
+                                    //Common.CreateSignAlertDialog(ScanActivity.this,"Start"+response.code() + "_" + response.errorBody().string()+response.message().toString());
+                                    Log.e("error", response.code() + "_" + response.errorBody().string());
+                                } catch (IOException e) {
+                                    Common.CreateSignAlertDialog(ScanActivity.this,response.code() + "_" + response.message());
+
+                                    //  e.printStackTrace();
+                                }
                                 if (response.code() == 500) {
                                     Toast.makeText(ScanActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
                                     try {
@@ -284,6 +316,36 @@ try {
                                 NavigatetToTimesActivity();
 
                             } else {
+                                try {
+                                    try {
+
+                                        JSONObject obj = null;
+
+                                        try {
+                                            String re=response.errorBody().string();
+                                            Log.e("data",re);
+                                            obj = new JSONObject(re);
+                                            // Log.e("data",obj.stri);
+
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                            Log.e("data",e.getMessage());
+                                        }
+                                        Common.CreateSignAlertDialog(ScanActivity.this,"End"+response.code() + "_" + response.errorBody().string()+response.message().toString()+obj.get("message").toString());
+
+
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                        //    Log.e("data",e.getMessage());
+                                    }
+
+                                  //  Common.CreateSignAlertDialog(ScanActivity.this,"End"+response.code() + "_" + response.errorBody().string()+response.message().toString());
+                                    Log.e("error", response.code() + "_" + response.errorBody().string());
+                                } catch (IOException e) {
+                                    Common.CreateSignAlertDialog(ScanActivity.this,"Ends"+response.code() + "_" + response.message().toString());
+
+                                    //  e.printStackTrace();
+                                }
                                 if (response.code() == 500) {
                                     Toast.makeText(ScanActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
 
