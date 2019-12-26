@@ -28,4 +28,6 @@
     <string name="close">غلق</string>
     <string name="notifications">الاشعارات</string>
     <string name="ok">اقبل</string>
+    <string name="inc_code">رمز التحقق غير صحيح</string>
+
 </resources>

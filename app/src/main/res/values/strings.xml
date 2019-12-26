@@ -28,4 +28,6 @@
     <string name="close">close</string>
     <string name="notifications">notifications</string>
     <string name="ok">Ok</string>
+    <string name="inc_code">Incorrect code</string>
+
 </resources>

@@ -252,7 +252,12 @@ try {
                                     }
 
 
-                                } else {
+                                }
+                                else if (response.code() == 405) {
+                                    Toast.makeText(ScanActivity.this, R.string.inc_code, Toast.LENGTH_SHORT).show();
+
+                                }
+                                else {
                                     Toast.makeText(ScanActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
 
                                     try {
@@ -350,7 +355,12 @@ try {
                                     Toast.makeText(ScanActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
 
 
-                                } else {
+                                }
+                                else if (response.code() == 405) {
+                                    Toast.makeText(ScanActivity.this, R.string.inc_code, Toast.LENGTH_SHORT).show();
+
+                                }
+                                else {
                                     Toast.makeText(ScanActivity.this, getString(R.string.failed), Toast.LENGTH_SHORT).show();
 
                                     try {
